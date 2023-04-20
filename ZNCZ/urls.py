@@ -3,7 +3,9 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('', views.index.as_view(), name='index'),
+
+    # path('', views.index.as_view(), name='index'),
+    path('auto_title/', views.auto_title.as_view(), name='auto_title'),
     path('long/', views.ab_long.as_view(), name='long_ab'),
     path('short/', views.ab_short.as_view(), name='short_ab'),
     path('norm/', views.ab_norm.as_view(), name='norm_ab'),

@@ -12,9 +12,10 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 
+from sshtunnel import SSHTunnelForwarder
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -26,7 +27,6 @@ SECRET_KEY = '#=8o1rizv@akz811(4l+0ba_y86-2%@u&lb^74bg2r+uz_qk#s'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -71,17 +71,32 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'jsjds.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+server = SSHTunnelForwarder(
+    ssh_address_or_host='124.222.146.136',  # 跳板机B地址
+    ssh_port=22,  # 跳板机B端口
+    ssh_username='ubuntu',
+    ssh_password='@viper204',
+    # local_bind_address=('127.0.0.1', 22),  # 这里必须填127.0.0.1
+    remote_bind_address=('127.0.0.1', 3306) # 目标机器A地址，端口
+)
+server.start()
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'aiuser',
+        'USER': 'root',
+        'PASSWORD': 'root1234',
+        'HOST': '127.0.0.1',
+        'PORT': server.local_bind_port,
+        'TEST': {
+            'CHARSET': 'utf8',
+            'COLLATION': 'utf8_general_ci'}
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -101,7 +116,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -115,8 +129,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGIN_URL = '/login/'

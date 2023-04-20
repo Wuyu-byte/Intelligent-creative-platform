@@ -28,7 +28,7 @@
                         <a style="color: aliceblue;">测试用户</a>
                     </a>
                     <dl class="layui-nav-child">
-                        <a href="">退出</a>
+                        <a href="{% url 'logout' %}">退出</a>
                     </dl>
                 </li>
                 <li class="layui-nav-item" lay-header-event="menuRight" lay-unselect>
@@ -44,7 +44,7 @@
                 <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
                 <ul class="layui-nav layui-nav-tree" lay-filter="test">
                     <li class="layui-nav-item layui-nav-itemed Card">
-                        <a class="" href="{% url 'index' %}">生成标题</a>
+                        <a class="" href="{% url 'auto_title' %}">生成标题</a>
                     </li>
                     <li class="layui-nav-item layui-nav-itemed">
                         <a href="javascript:">提取摘要</a>
@@ -59,6 +59,9 @@
                     </li>
                     <li class="layui-nav-item layui-nav-itemed Card">
                         <a class="" href="{% url 'wrong' %}">文本纠错</a>
+                    </li>
+                    <li class="layui-nav-item layui-nav-itemed Card">
+                        <a class="" href="{% url 'introduce' %}">关于我们</a>
                     </li>
                 </ul>
             </div>

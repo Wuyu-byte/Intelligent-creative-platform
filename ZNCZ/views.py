@@ -3,12 +3,23 @@ from django.views import View
 from django.http import JsonResponse
 
 from ZNCZ.Functional_function import Web_Title, auto_abstract_short, auto_abstract_norm, auto_abstract_long, \
-    keywords_draw,text_wrong
+    keywords_draw, text_wrong
+
+from django.shortcuts import render
+from django.http import HttpResponse, request, JsonResponse, HttpResponseRedirect
+import json, random
+from django.contrib.auth import authenticate, login, logout
+from django.conf import settings
+from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
+from django.urls import reverse
+from django.contrib.auth.models import User
 
 
-class index(View):
+class auto_title(View):
+    @login_required
     def get(self, request):
-        return render(request, 'index.html')
+        return render(request, 'auto_title.html')
 
     def post(self, request):
         data = request.POST
@@ -32,6 +43,7 @@ class index(View):
 
 
 class ab_long(View):
+    @login_required
     def get(self, request):
         return render(request, 'Abstract_long.html')
 
@@ -52,6 +64,7 @@ class ab_long(View):
 
 
 class ab_norm(View):
+    @login_required
     def get(self, request):
         return render(request, 'Abstract_norm.html')
 
@@ -72,6 +85,7 @@ class ab_norm(View):
 
 
 class ab_short(View):
+    @login_required
     def get(self, request):
         return render(request, 'Abstract_short.html')
 
@@ -176,6 +190,7 @@ class norm_file_upload(View):
 
 
 class keywords(View):
+    @login_required
     def get(self, request):
         return render(request, 'keywords.html')
 
@@ -191,6 +206,7 @@ class keywords(View):
 
 
 class wrong(View):
+    @login_required
     def get(self, request):
         return render(request, 'text_wrong.html')
 
@@ -202,3 +218,53 @@ class wrong(View):
 
         response = JsonResponse({'wrong': wrong})
         return response
+
+
+def login_action(request):
+    if request.method == 'POST':  # 判断采用的是何种请求
+        username = request.POST['username']  # request.POST[]或request.POST.get()获取数据
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)  # 保存登录会话,将登陆的信息封装到request.user,包括session
+            return redirect('/')
+        else:
+            return render(request, './login.html', {'error': '用户名密码错误！'})
+    else:
+        return render(request, './login.html')
+
+
+def register(request):
+    if request.method == 'POST':
+        username = request.POST['username']  # request.POST[]或request.POST.get()获取数据
+        password = request.POST['password']
+        email = request.POST['email']
+        user = User.objects.create_user(username, email, password)
+        user.save()
+        return redirect('/')
+    else:
+        return render(request, './register.html')
+
+
+def my_login(request):
+    return render(request, "login.html")
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')
+
+
+# class index(View):
+#     @login_required
+#     def get(self, request):
+#         username = request.user
+#         return render(request, './index.html', {'username': username})
+
+@login_required
+def index(request):
+    username = request.user
+    return render(request,'./index.html',{'username':username})
+# def index(request):
+#     username = request.user
+#     return render(request, './auto_title.html', {'username': username})
