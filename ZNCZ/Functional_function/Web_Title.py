@@ -3,12 +3,12 @@ import torch
 from bert_seq2seq import Tokenizer, load_chinese_base_vocab
 from bert_seq2seq import load_bert
 
-auto_title_model = "ZNCZ\\model1\\roberta_auto_title.bin"
+auto_title_model = "ZNCZ\\model_trained\\roberta_auto_title.bin"
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
 def autotitle(text):
-    vocab_path = "ZNCZ\\model1\\roberta_vocab.txt"  # roberta模型字典的位置
+    vocab_path = "ZNCZ\\model_trained\\roberta_vocab.txt"  # roberta模型字典的位置
     model_name = "roberta"
     # 加载字典
     word2idx = load_chinese_base_vocab(vocab_path)
