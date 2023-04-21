@@ -17,7 +17,6 @@ from django.contrib.auth.models import User
 
 
 class auto_title(View):
-    @login_required
     def get(self, request):
         return render(request, 'auto_title.html')
 
@@ -43,7 +42,6 @@ class auto_title(View):
 
 
 class ab_long(View):
-    @login_required
     def get(self, request):
         return render(request, 'Abstract_long.html')
 
@@ -64,7 +62,6 @@ class ab_long(View):
 
 
 class ab_norm(View):
-    @login_required
     def get(self, request):
         return render(request, 'Abstract_norm.html')
 
@@ -85,7 +82,6 @@ class ab_norm(View):
 
 
 class ab_short(View):
-    @login_required
     def get(self, request):
         return render(request, 'Abstract_short.html')
 
@@ -190,7 +186,6 @@ class norm_file_upload(View):
 
 
 class keywords(View):
-    @login_required
     def get(self, request):
         return render(request, 'keywords.html')
 
@@ -206,7 +201,6 @@ class keywords(View):
 
 
 class wrong(View):
-    @login_required
     def get(self, request):
         return render(request, 'text_wrong.html')
 
@@ -264,7 +258,14 @@ def logout_view(request):
 @login_required
 def index(request):
     username = request.user
-    return render(request,'./index.html',{'username':username})
+    return render(request, './index.html', {'username': username})
+
+
 # def index(request):
 #     username = request.user
 #     return render(request, './auto_title.html', {'username': username})
+
+
+class introduce(View):
+    def get(self,request):
+        return render(request, 'introduce.html')

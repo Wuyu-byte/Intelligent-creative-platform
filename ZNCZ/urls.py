@@ -16,4 +16,5 @@ urlpatterns = [
     path('norm_file_upload/', views.norm_file_upload.as_view(), name='norm_file_upload'),
     path('keywords/', views.keywords.as_view(), name='keywords'),
     path('text_wrong/', views.wrong.as_view(), name='wrong'),
+    path('introduce/', views.introduce.as_view(), name='introduce'),
 ]
