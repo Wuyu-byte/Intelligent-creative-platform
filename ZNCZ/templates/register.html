@@ -5,14 +5,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>翰墨—注册</title>
+    <title>用户注册-翰墨文字辅助创作平台</title>
     <link rel="stylesheet" href="../static/layui/css/layui.css" />
     <!-- 引入 layui.js -->
     <script src="../static/layui/layui.js"></script>
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <style>
         body {
-            background-image: url("../static/img/bg2.jpg");
+            background-image: url("../static/img/bg.png");
             background-position: center center;
             background-size: cover;
             background-repeat: no-repeat;
@@ -20,10 +20,10 @@
         }
 
         .loginForm {
-            width: 350px;
-            height: 370px;
+            width: auto;
+            height: auto;
             background-color: white;
-            padding: 30px 20px;
+            padding: 10% 10%;
             margin-top: 50%;
             border-radius: 5px;
             box-shadow: 0 0 5px black;
@@ -37,39 +37,38 @@
         <div class="layui-row" method="post">
             <div class="layui-col-md4 layui-col-md-offset4">
                 <div class="loginForm">
-                    <h2 align="center">用户注册</h2>
+                    <blockquote class="layui-elem-quote" style="font-size: 16px">用户注册-翰墨文字辅助创作平台</blockquote>
+                    <hr>
                     <form class="layui-form" action="/register/" method="post">
                         {% csrf_token %}
 
                         <div class="layui-form-item">
-                            <label>用户名:</label>
+{#                            <label>用户名</label>#}
                             <div class="layui-form-block">
-                                <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名"
-                                    class="layui-input">
+                                <input type="text" name="username" required lay-verify="required" placeholder="用户名"
+                                    class="layui-input" style="font-size: 15px;height:40px">
                             </div>
                         </div>
 
                         <div class="layui-form-item">
-                            <label>邮箱</label>
+{#                            <label>邮箱</label>#}
                             <div class="layui-form-block">
-                                <input type="text" name="email" required lay-verify="email" placeholder="请输入邮箱"
-                                    class="layui-input">
+                                <input type="text" name="email" required lay-verify="email" placeholder="邮箱"
+                                    class="layui-input" style="font-size: 15px;height:40px">
                             </div>
                         </div>
 
                         <div class="layui-form-item">
-                            <label>密码:</label>
+{#                            <label>密码</label>#}
                             <div class="layui-form-block">
                                 <input type="password" name="password" required lay-verify="required"
-                                    placeholder="请输入密码" class="layui-input">
+                                    placeholder="密码" class="layui-input" style="font-size: 15px;height:40px">
                             </div>
                         </div>
                         <br>
-
-
                         <div class="layui-form-item">
                             <div class="layui-form-block">
-                                <button class="layui-btn" lay-submit lay-filter="loginForm">注册</button>
+                                <button class="layui-btn" lay-submit lay-filter="loginForm">立即注册</button>
                             </div>
                         </div>
                     </form>

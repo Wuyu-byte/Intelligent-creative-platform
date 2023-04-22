@@ -18,7 +18,8 @@ from django.contrib.auth.models import User
 
 class auto_title(View):
     def get(self, request):
-        return render(request, 'auto_title.html')
+        username = request.user
+        return render(request, 'auto_title.html', {'username': username})
 
     def post(self, request):
         data = request.POST
@@ -43,7 +44,8 @@ class auto_title(View):
 
 class ab_long(View):
     def get(self, request):
-        return render(request, 'Abstract_long.html')
+        username = request.user
+        return render(request, 'Abstract_long.html', {'username': username})
 
     def post(self, request):
         data = request.POST
@@ -63,7 +65,8 @@ class ab_long(View):
 
 class ab_norm(View):
     def get(self, request):
-        return render(request, 'Abstract_norm.html')
+        username = request.user
+        return render(request, 'Abstract_norm.html',{'username': username})
 
     def post(self, request):
         data = request.POST
@@ -83,7 +86,8 @@ class ab_norm(View):
 
 class ab_short(View):
     def get(self, request):
-        return render(request, 'Abstract_short.html')
+        username = request.user
+        return render(request, 'Abstract_short.html',{'username': username})
 
     def post(self, request):
         data = request.POST
@@ -187,7 +191,8 @@ class norm_file_upload(View):
 
 class keywords(View):
     def get(self, request):
-        return render(request, 'keywords.html')
+        username = request.user
+        return render(request, 'keywords.html',{'username': username})
 
     def post(self, request):
         data = request.POST
@@ -202,7 +207,8 @@ class keywords(View):
 
 class wrong(View):
     def get(self, request):
-        return render(request, 'text_wrong.html')
+        username = request.user
+        return render(request, 'text_wrong.html',{'username': username})
 
     def post(self, request):
         data = request.POST
@@ -241,7 +247,8 @@ def register(request):
 
 
 def my_login(request):
-    return render(request, "login.html")
+    username = request.user
+    return render(request, "login.html",{'username': username})
 
 
 def logout_view(request):
@@ -267,5 +274,5 @@ def index(request):
 
 
 class introduce(View):
-    def get(self,request):
+    def get(self, request):
         return render(request, 'introduce.html')
