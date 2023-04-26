@@ -273,6 +273,6 @@ def index(request):
 #     return render(request, './auto_title.html', {'username': username})
 
 
-class introduce(View):
+class Introduction(View):
     def get(self, request):
-        return render(request, 'introduce.html')
+        return render(request, 'Introduction.html')

@@ -4,7 +4,8 @@
 <head>
     <link type="image/x-icon" rel="shortcut icon" href="../static/write.svg" >
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+{#    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />#}
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=0.8,maximum-scale=0.8,user-scalable=no"/>
     <title>翰墨</title>
     <link rel="stylesheet" href="../static/layui/css/layui.css" />
     <!-- 引入 layui.js -->
@@ -61,7 +62,7 @@
                         <a class="" href="{% url 'wrong' %}">文本纠错</a>
                     </li>
                     <li class="layui-nav-item layui-nav-itemed Card">
-                        <a class="" href="{% url 'introduce' %}">关于我们</a>
+                        <a class="" href="{% url 'Introduction' %}">关于我们</a>
                     </li>
                 </ul>
             </div>

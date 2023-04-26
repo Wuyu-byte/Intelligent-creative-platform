@@ -61,7 +61,7 @@
                         <a class="" href="{% url 'wrong' %}">文本纠错</a>
                     </li>
                     <li class="layui-nav-item layui-nav-itemed Card">
-                        <a class="" href="{% url 'introduce' %}">关于我们</a>
+                        <a class="" href="{% url 'Introduction' %}">关于我们</a>
                     </li>
                 </ul>
             </div>
@@ -83,10 +83,10 @@
                                     style="height: 250px;" lay-filter="textArea" id="textArea"></textarea>
                             </div>
                         </div>
-                        <div class="layui-form-item" style="margin-left: 100px;">
-                            <div class="layui-input-block" style="margin:0 32%;">
-                                <button type="button" class="layui-btn" lay-submit lay-filter="text">确定</button>
-                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                          <div class="layui-form-item" style="margin-left: 40%;">
+                            <div class="layui-btn-container">
+                            <button type="button" class="layui-btn" lay-submit lay-filter="text">确定</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                             </div>
                         </div>
                     </form>
@@ -176,11 +176,11 @@
                 <div class="layui-col-md6">
                     </br>
                     <h1 style="font-size: 30px;text-align: center;color: rgba(10, 69, 97, 0.322);">上传文件生成摘要(长)</h1>
-                    <div class="layui-upload-drag" id="test10" style="margin-top: 20px;margin-left:35%;"
+                    <div class="layui-upload-drag" id="test10" style="margin-top: 10px;margin-right: 36%;margin-left: 38%;"
                         enctype="multipart/form-data" name="file">
                         {% csrf_token %}
                         <i class="layui-icon"></i>
-                        <p>点击上传，或将文件拖拽到此处</p>
+                        <p>点击上传，或拖拽文件</p>
                         <div class="layui-hide" id="uploadDemoView">
                             <hr>
                             <img src="" alt="上传成功后渲染" style="max-width: 196px">

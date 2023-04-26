@@ -1,7 +1,7 @@
 import xmnlp
 import re
 
-xmnlp.set_model('ZNCZ\\model1\\xmnlp-models')
+xmnlp.set_model('ZNCZ\\model_trained\\xmnlp-models')
 
 
 def text_wrong(text):
