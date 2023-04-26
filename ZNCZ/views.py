@@ -105,10 +105,6 @@ class ab_short(View):
         return response
 
 
-class historical_record(View):
-    def get(self, request):
-        return render(request, 'historical record.html')
-
 
 class file_upload(View):
     def post(self, request):
@@ -272,7 +268,3 @@ def index(request):
 #     username = request.user
 #     return render(request, './auto_title.html', {'username': username})
 
-
-class Introduction(View):
-    def get(self, request):
-        return render(request, 'Introduction.html')
