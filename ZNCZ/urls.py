@@ -13,6 +13,8 @@ urlpatterns = [
     path('short_file_upload/', views.short_file_upload.as_view(), name='short_file_upload'),
     path('long_file_upload/', views.long_file_upload.as_view(), name='long_file_upload'),
     path('norm_file_upload/', views.norm_file_upload.as_view(), name='norm_file_upload'),
+    path('keywords_file_upload/', views.keywords_file_upload.as_view(), name='keywords_file_upload'),
+    path('wrong_file_upload/', views.wrong_file_upload.as_view(), name='wrong_file_upload'),
     path('keywords/', views.keywords.as_view(), name='keywords'),
     path('text_wrong/', views.wrong.as_view(), name='wrong'),
 ]

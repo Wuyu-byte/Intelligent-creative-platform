@@ -60,6 +60,9 @@
                     <li class="layui-nav-item layui-nav-itemed Card">
                         <a class="" href="{% url 'wrong' %}">文本纠错</a>
                     </li>
+                    <li class="layui-nav-item layui-nav-itemed Card">
+                        <a class="" href="{% url 'index' %}">关于我们</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -186,7 +189,7 @@
                             //执行实例
                             var uploadInst = upload.render({
                                 elem: '#test10'
-                                , url: '/keywords_file_upload/' //此处用的是第三方的 http 请求演示，实际使用时改成您自己的上传接口即可
+                                , url: '/keywords_file_upload/'
                                 , exts: 'txt|src|tgt'
                                 , before: function (obj) { //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
                                     layer.load(); //上传loading
@@ -194,7 +197,7 @@
                                 , done: function (File) {
                                     layer.closeAll('loading');
                                     layer.msg('上传成功');
-                                    document.getElementById("keywords").textContent = File.keywords;
+                                    document.getElementById("keywords1").textContent = File.keywords1;
                                 }
                                 , error: function (index, upload) {
                                     layer.closeAll('loading');
@@ -213,7 +216,7 @@
                     <div class="layui-collapse" style="margin-top: 30px;margin-right: 40px;margin-left: 40px;">
                         <div class="layui-colla-item">
                             <h2 class="layui-colla-title">文章关键词如下</h2>
-                            <div class="layui-colla-content layui-show" id="keywords">请在左侧上传文件</div>
+                            <div class="layui-colla-content layui-show" id="keywords1">请在左侧上传文件</div>
                         </div>
                     </div>
                     <form class="layui-form layui-form-pane" action="" style="margin-top: 70px;text-align: center;">

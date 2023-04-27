@@ -66,7 +66,7 @@ class ab_long(View):
 class ab_norm(View):
     def get(self, request):
         username = request.user
-        return render(request, 'Abstract_norm.html',{'username': username})
+        return render(request, 'Abstract_norm.html', {'username': username})
 
     def post(self, request):
         data = request.POST
@@ -87,7 +87,7 @@ class ab_norm(View):
 class ab_short(View):
     def get(self, request):
         username = request.user
-        return render(request, 'Abstract_short.html',{'username': username})
+        return render(request, 'Abstract_short.html', {'username': username})
 
     def post(self, request):
         data = request.POST
@@ -103,7 +103,6 @@ class ab_short(View):
 
         response = JsonResponse({'abstract5': abstract5})
         return response
-
 
 
 class file_upload(View):
@@ -188,7 +187,7 @@ class norm_file_upload(View):
 class keywords(View):
     def get(self, request):
         username = request.user
-        return render(request, 'keywords.html',{'username': username})
+        return render(request, 'keywords.html', {'username': username})
 
     def post(self, request):
         data = request.POST
@@ -201,10 +200,22 @@ class keywords(View):
         return response
 
 
+class keywords_file_upload(View):
+    def post(self, request):
+        File = request.FILES.get("file", None)
+        text = ''
+        for chunk in File.chunks():
+            text = text + chunk.decode('utf-8')
+        keywords1 = keywords_draw.keywords_draw(text)
+
+        response = JsonResponse({'keywords1': keywords1})
+        return response
+
+
 class wrong(View):
     def get(self, request):
         username = request.user
-        return render(request, 'text_wrong.html',{'username': username})
+        return render(request, 'text_wrong.html', {'username': username})
 
     def post(self, request):
         data = request.POST
@@ -213,6 +224,18 @@ class wrong(View):
         wrong = text_wrong.text_wrong(text2)
 
         response = JsonResponse({'wrong': wrong})
+        return response
+
+
+class wrong_file_upload(View):
+    def post(self, request):
+        File = request.FILES.get("file", None)
+        text = ''
+        for chunk in File.chunks():
+            text = text + chunk.decode('utf-8')
+        wrong1 = text_wrong.text_wrong(text)
+
+        response = JsonResponse({'wrong1': wrong1})
         return response
 
 
@@ -244,7 +267,7 @@ def register(request):
 
 def my_login(request):
     username = request.user
-    return render(request, "login.html",{'username': username})
+    return render(request, "login.html", {'username': username})
 
 
 def logout_view(request):
@@ -263,8 +286,6 @@ def index(request):
     username = request.user
     return render(request, './index.html', {'username': username})
 
-
 # def index(request):
 #     username = request.user
 #     return render(request, './auto_title.html', {'username': username})
-
